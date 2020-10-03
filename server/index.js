@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 5000;
 const { User } = require('./models/User');
 const { auth } = require('./middleware/auth');
 const bodyParser = require('body-parser');
@@ -26,6 +26,10 @@ mongoose.connect(config.mongoURI, {
 app.get('/', (req, res) => {
     res.send('Hello world!');
 });
+
+app.get('/api/hello', (req, res) => {
+    res.send("안녕하세요 서버입니다 후후~")
+})
 
 app.post('/api/users/register', (req, res) => {
     // 화원가입에 필요한 정보들을 client에서 가져오면 그것들을  DB에 넣어준다
